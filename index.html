@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>body{
+      color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background: url(img1.jpg) no-repeat;
+          background-size: cover;
+          background-position: center;
+          }
+      
+          header{
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              padding: 20px 100px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              z-index: 99;}
+              
+              .logo{
+              font-size: 2em;
+              color: #fff;
+              user-select: none;}
+              
+              .navigation a{
+                  position: relative;
+                  font-size: 1.1em;
+                  color :#fff;
+                  text-decoration: none;
+                  font-weight: 500;
+                  margin-left: 40px;}
+              
+              .navigation a::after{
+              content: '';
+              position: absolute;
+              left: 0;
+              bottom: -6px;
+              width: 100%;
+              height: 3px;
+              background: #fff;
+              border-radius: 5px;
+              transform-origin: right  ;
+              transform: scaleX(0);
+              transition: transform .5s;}
+              
+              .navigation a:hover::after{
+                  transform-origin: left;
+              transform: scaleX(1);}
+              
+              .navigation .btnLogin-popup{
+              width: 130px;
+              height: 50px;
+              background: transparent;
+              border: transparent;
+              outline: none;
+              border-radius: 6px ;
+              cursor: pointer;
+              font-size: 1.1em;
+              color: transparent;
+              font-weight: 500;
+              margin-left: 60px;
+              transition: .5s;}
+              
+              .navigation .btnLogin-popup:hover{
+              background: #fff;
+              color: #162938;}
+      
+      
+      .calculator {
+      
+          width: 200px;
+        
+          margin: 0 auto;
+        
+          text-align: center;
+        
+        }
+        
+        
+        input[type="text"] {
+        
+          width: 100%;
+        
+          margin-bottom: 10px;
+        
+          padding: 5px;
+        
+        }
+        
+        
+        .buttons {
+          display: grid;
+        
+          grid-template-columns: repeat(4, 1fr);
+        
+          grid-gap: 5px;
+        
+        }
+        
+        
+        button {
+          background: transparent;
+          padding: 10px;
+        color: white;
+          font-size: 18px;
+        
+        }
+      
+        footer{
+      
+          position: absolute;
+         
+          left: 0;
+          width: 10%;
+      
+          display: flex;
+          justify-content: space-between;
+          position:absolute;
+          top: 90%;
+          left: 45%;
+        
+      
+      
+        }</style>
+  <title>Calculadora</title>
+</head>
+
+<header>
+
+    <h2 class="logo" >
+        Relaxing Calculator</h2>
+
+    <nav class="navigation" >
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="service.html">Service</a>
+<a href="contact.html">Contact</a>
+<button class="btnLogin-popup">Login</button>
+    </nav>
+</header>
+
+
+<body>
+
+  <div class="calculator">
+
+    <input type="text" id="display" readonly>
+
+    <div class="buttons">
+
+      <button onclick="clearDisplay()">C</button>
+
+      <button onclick="appendNumber(7)">7</button>
+
+      <button onclick="appendNumber(8)">8</button>
+
+      <button onclick="appendNumber(9)">9</button>
+
+      <button onclick="appendOperator('+')">+</button>
+
+      <button onclick="appendNumber(4)">4</button>
+
+      <button onclick="appendNumber(5)">5</button>
+
+      <button onclick="appendNumber(6)">6</button>
+
+      <button onclick="appendOperator('-')">-</button>
+
+      <button onclick="appendNumber(1)">1</button>
+
+      <button onclick="appendNumber(2)">2</button>
+
+      <button onclick="appendNumber(3)">3</button>
+
+      <button onclick="appendOperator('*')">*</button>
+
+      <button onclick="appendNumber(0)">0</button>
+
+      <button onclick="calculateResult()">=</button>
+
+      <button onclick="appendOperator('/')">/</button>
+
+
+      
+    </div>
+
+  </div>
+ 
+
+  <script>   let display = document.getElementById('display');
+    //A variavel display e declarada e recebe o elemento html com o id correspondente, criando assim uma caixa de texto aonde a equaçao sera exibida.//
+    
+    
+    let equation = '';
+    //Uma string vazia para armazenar a equaçao//
+    
+    function appendNumber(number) {
+    
+      equation += number;
+    
+      display.value = equation;
+    
+    }
+    //A funçao appendNumber recebe o parametro number., ele concatena o numero rebido a variavel equantion e atualiza o valor do elemento display, pra mostrar a nova equaçao//
+    
+    function appendOperator(operator) {
+    
+      equation += operator;
+    
+      display.value = equation;
+    
+    }
+    //appendOperator recebe o parametro operator, ela concatena o o perador recebido na variavel equation e atualiza o valor no display
+    
+    function clearDisplay() {
+    
+      equation = '';
+    
+      display.value = equation;
+    
+    }
+    // a funçao clearDisplay limpa o display//
+    
+    function calculateResult() {
+    
+      try {
+    
+        let result = eval(equation);
+    
+        equation = result.toString();
+    
+        display.value = equation;
+    
+      } catch (error) {
+    
+        display.value = 'Error';
+    
+      }
+    
+    }
+    //a funçao calculateResult tenta avaliar a equaçao usando a funçao eval, ela armazena o resultado e converte esse resultado em uma string, assim mostrando o resultado no display, e em caso de erro vai exibir error// </script>
+<footer> <audio controls loop>
+    <source src="music.mp3" type="audio/mp3">
+  </audio></footer>
+</body>
+
+</html>
